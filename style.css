@@ -1681,6 +1681,14 @@ body {
     min-height: auto;
   }
   
+  .cell-container {
+    min-height: clamp(260px, 45dvh, 420px);
+  }
+  
+  .cell-scene {
+    min-height: 100%;
+  }
+  
   .game-header {
     flex-direction: column;
     align-items: stretch;
