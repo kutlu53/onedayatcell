@@ -466,7 +466,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 300px;
   gap: var(--spacing-lg);
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -483,7 +484,7 @@ body {
   gap: var(--spacing-md);
   padding: var(--spacing-md);
   height: 100%;
-  min-height: calc(100vh - 2rem);
+  min-height: calc(100dvh - 2rem);
 }
 
 .game-header {
@@ -503,8 +504,10 @@ body {
 
 .controls {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-sm);
   align-items: center;
+  justify-content: flex-end;
 }
 
 .time-scale-control {
@@ -862,7 +865,7 @@ body {
   background: var(--color-bg-card);
   border-radius: var(--border-radius);
   overflow-y: auto;
-  max-height: 100vh;
+  max-height: 100dvh;
 }
 
 /* Progress Barlar */
@@ -1370,6 +1373,7 @@ body {
   background: var(--color-bg);
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -1379,7 +1383,7 @@ body {
   flex-direction: column;
   gap: var(--spacing-md);
   padding: var(--spacing-md);
-  height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -1390,7 +1394,7 @@ body {
   background: var(--color-bg-card);
   border-left: 2px solid var(--color-border);
   overflow-y: auto;
-  height: 100vh;
+  min-height: 100dvh;
 }
 
 .story-card {
@@ -1667,6 +1671,70 @@ body {
 
 /* Mobil uyumluluk */
 @media (max-width: 768px) {
+  #screen-sim {
+    height: auto;
+    min-height: 100dvh;
+    overflow: auto;
+  }
+  
+  .game-area {
+    min-height: auto;
+  }
+  
+  .game-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+  
+  .controls {
+    justify-content: flex-start;
+  }
+  
+  .time-scale-control {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .time-scale-control input[type="range"] {
+    width: 100%;
+    max-width: 180px;
+  }
+  
+  #screen-story {
+    flex-direction: column;
+    overflow: auto;
+    padding-bottom: 90px; /* Sabit buton alanı için boşluk */
+  }
+  
+  #screen-story .game-area {
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+  }
+  
+  #screen-story .sidebar {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    min-height: auto;
+    height: auto;
+    border-left: none;
+    border-top: 2px solid var(--color-border);
+  }
+  
+  .story-buttons-container {
+    width: calc(100% - 1rem);
+    left: 0.5rem;
+    transform: none;
+    bottom: 0.5rem;
+  }
+  
+  .story-btn-prev,
+  .story-btn-next {
+    min-height: 44px;
+  }
+
   .speech-bubble {
     max-width: clamp(180px, 80vw, 250px);
     min-width: 120px;
@@ -1675,6 +1743,17 @@ body {
   .speech-bubble-text {
     padding: var(--spacing-sm);
     font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #screen-sim {
+    grid-template-columns: 1fr 260px;
+  }
+  
+  #screen-story .sidebar {
+    width: 260px;
+    min-width: 220px;
   }
 }
 
